@@ -2,7 +2,7 @@ from common.utils.checker import is_not_null, is_null
 from common.utils.logger import format_log
 from common.utils.datetime import check_time_format, get_time_str_from_timestamp, get_time_str_now
 from common.database import database_command as db_commands
-from common.database import database_settings as db_settings
+from common.config import settings as common_settings
 
 import mysql.connector
 import copy
@@ -16,7 +16,7 @@ class CommonDatabase(object):
 		if config is not None:
 			self.config = config
 		else:
-			self.config = db_settings.CONFIG
+			self.config = common_settings.DATABASE_CONFIG
 		if database is not None:
 			self.config['database'] = database
 		self.initialize_database()

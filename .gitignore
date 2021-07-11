@@ -1,6 +1,5 @@
 # custom
 .vscode/
-database_settings.py
 cookies.json
 cookies.json.backup
 config/settings.py
