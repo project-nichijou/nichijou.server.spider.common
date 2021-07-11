@@ -10,7 +10,7 @@ import traceback
 
 from common.utils.hash import get_md5
 
-class SpiderDatabase(object):
+class CommonDatabase(object):
 
 	def __init__(self, database=None, config=None):
 		if config is not None:

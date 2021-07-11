@@ -1,7 +1,7 @@
 import scrapy
 
 
-class SpiderLogItem(scrapy.Item):
+class CommonLogItem(scrapy.Item):
 
 	time = scrapy.Field()
 

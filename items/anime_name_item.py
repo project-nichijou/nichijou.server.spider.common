@@ -1,7 +1,7 @@
 import scrapy
 
 
-class SpiderAnimeNameItem(scrapy.Item):
+class CommonAnimeNameItem(scrapy.Item):
 
 	id = scrapy.Field()
 

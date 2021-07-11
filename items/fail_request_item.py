@@ -1,7 +1,7 @@
 import scrapy
 
 
-class SpiderFailedRequestItem(scrapy.Item):
+class CommonFailedRequestItem(scrapy.Item):
 
 	url_md5 = scrapy.Field()
 

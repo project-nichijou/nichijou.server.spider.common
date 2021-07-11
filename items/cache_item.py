@@ -1,6 +1,6 @@
 import scrapy
 
-class SpiderCacheItem(scrapy.Item):
+class CommonCacheItem(scrapy.Item):
 
 	url_md5 = scrapy.Field()
 
