@@ -1,3 +1,4 @@
+from mysql.connector import cursor
 from common.utils.checker import is_not_null, is_null
 from common.utils.logger import format_log
 from common.utils.datetime import check_time_format, get_time_str_from_timestamp, get_time_str_now
@@ -59,6 +60,16 @@ class CommonDatabase(object):
 		cmds = db_commands.CREATE_TABLE_COMMANDS.values()
 		for cmd in cmds:
 			cursor.execute(cmd)
+		cursor.close()
+
+
+	def execute(self, command: str):
+		'''
+		execute custom commands directly (without returning any results)
+		'''
+		cursor = self.get_cursor()
+		cursor.execute(command)
+		cursor.close()
 
 
 	def write(self, table: str, values: dict):
