@@ -1,7 +1,10 @@
+from common.items.common_item import CommonItem
 import scrapy
 
 
-class CommonEpisodeNameItem(scrapy.Item):
+class CommonEpisodeNameItem(CommonItem):
+
+	table = 'episode_name'
 
 	id = scrapy.Field()
 

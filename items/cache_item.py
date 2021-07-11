@@ -1,6 +1,10 @@
+from common.items.common_item import CommonItem
 import scrapy
 
-class CommonCacheItem(scrapy.Item):
+
+class CommonCacheItem(CommonItem):
+
+	table = 'cache'
 
 	url_md5 = scrapy.Field()
 

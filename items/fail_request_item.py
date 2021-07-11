@@ -1,7 +1,10 @@
+from common.items.common_item import CommonItem
 import scrapy
 
 
-class CommonFailedRequestItem(scrapy.Item):
+class CommonFailedRequestItem(CommonItem):
+
+	table = 'request_failed'
 
 	url_md5 = scrapy.Field()
 
