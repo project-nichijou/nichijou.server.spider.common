@@ -3,6 +3,7 @@
 database_settings.py
 cookies.json
 cookies.json.backup
+config/settings.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
