@@ -61,7 +61,7 @@ CREATE_TABLE_COMMANDS = {
 	), 
 	'CREATE_TABLE_REQUEST_FAILED': (
 		'CREATE TABLE IF NOT EXISTS `request_failed` ('
-		'	`url_md5`	VARCHAR(32),'
+		'	`url_md5`	VARCHAR(32) NOT NULL,'
 		'	`url`		LONGTEXT NOT NULL,'
 		'	`spider`	VARCHAR(20) NOT NULL,'
 		'	`desc`		LONGTEXT,'
@@ -70,7 +70,7 @@ CREATE_TABLE_COMMANDS = {
 	), 
 	'CREATE_TABLE_CACHE': (
 		'CREATE TABLE IF NOT EXISTS `cache` ('
-		'	`url_md5`	VARCHAR(32),'
+		'	`url_md5`	VARCHAR(32) NOT NULL,'
 		'	`url`		LONGTEXT NOT NULL,'
 		'	`expire`	DATETIME NOT NULL,'
 		'	`content`	LONGTEXT NOT NULL,'

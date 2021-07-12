@@ -1,4 +1,3 @@
-from mysql.connector import cursor
 from common.utils.checker import is_not_null, is_null
 from common.utils.logger import format_log
 from common.utils.datetime import check_time_format, get_time_str_from_timestamp, get_time_str_now
@@ -104,14 +103,17 @@ class CommonDatabase(object):
 			))
 
 
-	def update(self, table: str, primary_keys: dict, values: dict):
+	def update(self, table: str, primary_keys: list, values: dict):
 		'''
 		safe version of `write`. 
 		this function would merge the original values in the database with new values.
-		`primary_keys` (and values) should be provided to query data
+		`primary_keys` should be provided to query data
 		'''
 		try:
-			old = self.read_all(table=table, keys=['*'], eq_conditions=primary_keys)
+			eq_conditions = {
+				p_key: values[p_key] for p_key in primary_keys
+			}
+			old = self.read_all(table=table, keys=['*'], eq_conditions=eq_conditions)
 			if len(old) > 1:
 				raise Exception('primary_keys provided not unique')
 			vals = {}
