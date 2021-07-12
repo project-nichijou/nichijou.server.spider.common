@@ -6,6 +6,8 @@ class CommonLogItem(CommonItem):
 
 	table = 'log'
 
+	primary_keys = []
+
 	time = scrapy.Field()
 
 	content = scrapy.Field()

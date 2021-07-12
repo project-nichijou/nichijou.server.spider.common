@@ -6,6 +6,8 @@ class CommonCacheItem(CommonItem):
 
 	table = 'cache'
 
+	primary_keys = ['url_md5']
+
 	url_md5 = scrapy.Field()
 
 	url = scrapy.Field()

@@ -6,6 +6,8 @@ class CommonEpisodeItem(CommonItem):
 
 	table = 'episode'
 
+	primary_keys = ['id', 'sort', 'type']
+
 	id = scrapy.Field()
 
 	type = scrapy.Field()

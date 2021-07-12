@@ -6,13 +6,15 @@
 		- [`use_cookies`](#use_cookies)
 	- [`common.items.common_item.CommonItem`](#commonitemscommon_itemcommonitem)
 		- [`table`](#table)
+		- [`primary_keys`](#primary_keys)
+		- [`_url`](#_url)
 		- [`use_fail`](#use_fail)
 
 # 使用方法
 
 可以考虑如下几种方式:
-- 传参时写入值
-- 子类继承父类，自定义某些字段
+- 子类继承父类，自定义某些字段，覆写值
+- 传参使用。注意：`Item`只有变量名为`_`开始的才能够作为属性直接修改，否则需要通过`dict`的方式。
 
 # API
 
@@ -33,6 +35,16 @@
 
 - `type`: `str`
 - `desc`: 此`Item`将被保存到的数据表
+
+### `primary_keys`
+
+- `type`: `list`
+- `desc`: 存入数据表的`primary_keys` (主键)，用于`update`数据，若此项缺失，则会直接覆写
+
+### `_url`
+
+- `type`: `str`
+- `desc`: 产生该`Item`请求的`url`，用于删除`fail`记录
 
 ### `use_fail`
 

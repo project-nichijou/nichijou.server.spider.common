@@ -6,6 +6,8 @@ class CommonAnimeItem(CommonItem):
 
 	table = 'anime'
 
+	primary_keys = ['id']
+
 	id = scrapy.Field()
 
 	url = scrapy.Field()
