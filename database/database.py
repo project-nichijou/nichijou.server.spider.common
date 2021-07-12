@@ -66,9 +66,20 @@ class CommonDatabase(object):
 		'''
 		execute custom commands directly (without returning any results)
 		'''
-		cursor = self.get_cursor()
-		cursor.execute(command)
-		cursor.close()
+		try:
+			cursor = self.get_cursor()
+			cursor.execute(command)
+			cursor.close()
+		except Exception as e:
+			self.log(format_log(
+				info='exception caught when executing sql.',
+				exception=e,
+				traceback=traceback.format_exc(),
+				values={
+					'command': command
+				}
+			))
+
 
 
 	def write(self, table: str, values: dict):
