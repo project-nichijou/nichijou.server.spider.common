@@ -195,18 +195,38 @@ class CommonDatabase(object):
 			))
 
 
-	def delete_fail(self, url: str, urlmd5: str, spider: str):
+	def read_fail(self, spider: str):
+		'''
+		read the `request_failed` items, which are from `spider`
+		'''
+		try:
+			return self.read_all('request_failed', ['*'], {
+				'spider': spider
+			})
+		except Exception as e:
+			self.log(format_log(
+				info='exception caught when reading fail.',
+				exception=e,
+				traceback=traceback.format_exc(),
+				values={
+					'table': 'request_failed',
+					'spider': spider
+				}
+			))
+
+
+	def delete_fail(self, url: str='', url_md5: str='', spider: str=''):
 		'''
 		delete the resolved `request_failed` item
 		'''
 		try:
-			if is_null(url) and is_null(urlmd5):
-				raise Exception('`url` and `urlmd5` should not both be null')
-			if is_null(urlmd5):
-				urlmd5 = get_md5(url)
+			if is_null(url) and is_null(url_md5):
+				raise Exception('`url` and `url_md5` should not both be null')
+			if is_null(url_md5):
+				url_md5 = get_md5(url)
 			cursor = self.get_cursor()
 
-			delete = f'DELETE FROM `request_failed` WHERE `url_md5` = {urlmd5} AND `spider` = {spider}'
+			delete = f'DELETE FROM `request_failed` WHERE `url_md5` = {repr(url_md5)} AND `spider` = {repr(spider)}'
 
 			cursor.execute(delete)
 			self.database.commit()
@@ -218,7 +238,7 @@ class CommonDatabase(object):
 				traceback=traceback.format_exc(),
 				values={
 					'url': url,
-					'urlmd5': urlmd5,
+					'url_md5': url_md5,
 					'spider': spider
 				}
 			))
