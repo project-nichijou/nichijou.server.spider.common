@@ -8,6 +8,8 @@ class CommonLogItem(CommonItem):
 
 	primary_keys = []
 
+	use_fail = False
+
 	time = scrapy.Field()
 
 	content = scrapy.Field()

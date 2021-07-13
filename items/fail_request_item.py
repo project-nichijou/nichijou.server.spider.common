@@ -8,6 +8,8 @@ class CommonFailedRequestItem(CommonItem):
 
 	primary_keys = ['url_md5', 'spider']
 
+	use_fail = False
+
 	url_md5 = scrapy.Field()
 
 	url = scrapy.Field()
