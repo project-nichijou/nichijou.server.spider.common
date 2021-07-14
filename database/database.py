@@ -1,5 +1,5 @@
 from common.utils.checker import is_not_null, is_null
-from common.utils.logger import format_log
+from common.utils.formatter import format_log
 from common.utils.datetime import check_time_format, get_time_str_from_timestamp, get_time_str_now
 from common.database import database_command as db_commands
 from common.config import settings as common_settings
