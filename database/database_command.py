@@ -65,6 +65,7 @@ CREATE_TABLE_COMMANDS = {
 		'	`url`		LONGTEXT NOT NULL,'
 		'	`spider`	VARCHAR(20) NOT NULL,'
 		'	`desc`		LONGTEXT,'
+		'	`params`	LONGTEXT,'
 		'	PRIMARY KEY ( `url_md5`, `spider` )'
 		') ENGINE=InnoDB CHARSET=utf8mb4'
 	), 
