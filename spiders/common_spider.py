@@ -4,6 +4,7 @@ from common.utils.hash import get_md5
 from common.config import settings as common_settings
 from common.cookies.cookies_io import read_cookies
 import scrapy
+import json
 
 
 class CommonSpider(scrapy.Spider):
@@ -73,5 +74,6 @@ class CommonSpider(scrapy.Spider):
 					'failure': failure.__dict__,
 					'parameters': parameters
 				}
-			)
+			),
+			params = json.dumps(parameters)
 		)

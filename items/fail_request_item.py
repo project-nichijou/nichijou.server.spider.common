@@ -17,3 +17,5 @@ class CommonFailedRequestItem(CommonItem):
 	spider = scrapy.Field()
 
 	desc = scrapy.Field()
+
+	params = scrapy.Field()
