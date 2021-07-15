@@ -2,33 +2,10 @@ import traceback
 from common.utils.checker import is_null
 from common.utils.ac import ACAutomaton
 from common.utils.hash import get_md5
+from common.utils.logger import format_log
+from common.database.database import CommonDatabase
 import time
 
-
-def format_log(info: str, exception=None, traceback: str=None, values: dict={}):
-	log = (
-		f'INFO: {info}\n'
-		f'------------\n'
-	)
-	if exception is not None:
-		log = log + (
-			f'EXCEPTION FOUNDED: \n'
-			f'{repr(exception)}\n'
-			f'------------\n'
-		)
-	if traceback is not None:
-		log = log + (
-			f'TRACEBACK: \n'
-			f'{traceback}\n'
-			f'------------\n'
-		)
-	for key in values.keys():
-		log = log + (
-			f'{key}: {repr(values[key])}\n'
-		)
-	return log
-
-from common.database.database import CommonDatabase
 
 def format_id(id):
 	if isinstance(id, int):

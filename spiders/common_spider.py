@@ -1,4 +1,4 @@
-from common.utils.formatter import format_log
+from common.utils.logger import format_log
 from common.items.fail_request_item import CommonFailedRequestItem
 from common.utils.hash import get_md5
 from common.config import settings as common_settings
