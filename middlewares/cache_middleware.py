@@ -1,3 +1,4 @@
+from common.cache.cache_response import CacheResponse
 from common.utils.checker import is_null
 import traceback
 from common.utils.logger import format_log
@@ -27,6 +28,7 @@ class CommonCacheMiddleware:
 			cache = self.database.read_cache(url=url)
 			if is_null(cache): return None
 			cache.request = request
+			CacheResponse.mark_cache(cache)
 			return cache
 		except Exception as e:
 			self.database.log(

@@ -19,6 +19,8 @@ def make_cache_item(response, expire):
 		response.request = None
 		response.certificate = None
 
+		CacheResponse.mark_cache(response)
+
 		content = dill.dumps(response)
 
 		response.request = request
