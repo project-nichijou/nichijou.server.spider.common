@@ -1,6 +1,7 @@
+import dill
 from common.utils.checker import is_not_null, is_null
 from common.utils.logger import format_log
-from common.utils.datetime import check_time_format, get_time_str_from_timestamp, get_time_str_now
+from common.utils.datetime import check_time_format, get_date_str_now, get_time_str_from_timestamp, get_time_str_now
 from common.database import database_command as db_commands
 from common.config import settings as common_settings
 
@@ -191,6 +192,37 @@ class CommonDatabase(object):
 					'table': table,
 					'keys': keys,
 					'eq_conditions': eq_conditions
+				}
+			))
+
+
+	def read_cache(self, url: str='', url_md5: str=''):
+		'''
+		read cache items not yet expired
+		'''
+		try:
+			if is_null(url) and is_null(url_md5):
+				raise Exception('`url` and `url_md5` should not both be null')
+			if is_null(url_md5):
+				url_md5 = get_md5(url)
+			cursor = self.get_cursor(True)
+
+			select = f'SELECT `content` FROM `cache` WHERE `url_md5` = {repr(url_md5)} AND `expire` > {repr(get_date_str_now())}'
+
+			cursor.execute(select)
+			res = cursor.fetchall()
+
+			if is_null(res): return None
+			return dill.loads(res[0]['content'])
+		except Exception as e:
+			self.log(format_log(
+				info='exception caught when reading cache.',
+				exception=e,
+				traceback=traceback.format_exc(),
+				values={
+					'table': 'cache',
+					'url': url,
+					'url_md5': url_md5
 				}
 			))
 
