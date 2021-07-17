@@ -74,7 +74,7 @@ CREATE_TABLE_COMMANDS = {
 		'	`url_md5`	VARCHAR(32) NOT NULL,'
 		'	`url`		LONGTEXT NOT NULL,'
 		'	`expire`	DATETIME NOT NULL,'
-		'	`content`	LONGTEXT NOT NULL,'
+		'	`content`	LONGBLOB,'
 		'	PRIMARY KEY ( `url_md5` )'
 		') ENGINE=InnoDB CHARSET=utf8mb4'
 	)
