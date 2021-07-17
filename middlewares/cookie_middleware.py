@@ -1,3 +1,4 @@
+from common.cache.cache_response import CacheResponse
 from common.config import settings as common_settings
 from common.cookies.cookies_io import write_cookies
 from scrapy.http.cookies import CookieJar
@@ -55,6 +56,8 @@ class CommonCookiesMiddleware:
 
 	def process_response(self, request, response, spider):
 		# Called with the response returned from the downloader.
+		if CacheResponse.judge_cache(response):
+			return response
 		if request.meta.get('dont_merge_cookies', False):
 			return response
 		# judge type of spider
