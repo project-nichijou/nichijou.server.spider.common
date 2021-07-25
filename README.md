@@ -16,7 +16,7 @@
 
 # 介绍
 
-本项目是[Project Nichijou](https://github.com/project-nichijou/intro)的一个子项目。根据[内部规范](https://github.com/project-nichijou/intro/blob/master/doc.md)实现的基于[Scrapy](https://scrapy.org/)二次开发的爬虫框架。
+本项目是[Project Nichijou](https://project-nichijou.github.io/docs)的一个子项目。根据[内部规范](https://project-nichijou.github.io/docs/#/./server/anime-database/spider)实现的基于[Scrapy](https://scrapy.org/)二次开发的爬虫框架。
 
 # 结构
 
